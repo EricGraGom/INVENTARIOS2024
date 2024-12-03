@@ -6,7 +6,7 @@ fetch('data.csv')
     .then(response => response.text())
     .then(data => {
         const rows = data.split('\n');
-        const headers = rows[0].split(',');
+        const headers = rows[0].split(';');
 
         let table = '<table><tr>';
         headers.forEach(header => {
@@ -15,7 +15,7 @@ fetch('data.csv')
         table += '</tr>';
 
         for (let i = 1; i < rows.length; i++) {
-            const values = rows[i].split(',');
+            const values = rows[i].split(';');
 
             // Filtrar por ubicación si locationFilter está presente
             if (locationFilter && values[4] !== locationFilter) {
