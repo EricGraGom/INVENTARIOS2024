@@ -5,13 +5,13 @@ fetch('data.csv')
     .then(response => response.text())
     .then(data => {
         const rows = data.split('\n');
-        const headers = rows[0].split(',');
+        const headers = rows[0].split(';');
 
         let productDetails = '';
         let productLocation = '';
 
         for (let i = 1; i < rows.length; i++) {
-            const values = rows[i].split(',');
+            const values = rows[i].split(';');
             if (values[0] === productId) {
                 const productName = values[1];
                 const productMarca = values[2];
